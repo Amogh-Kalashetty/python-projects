@@ -25,17 +25,20 @@ def guess_game():
     count = 0
     for guesscount in range(6, 1, -1):
         print('Please guess the number')
-        guess = int(input())
         chances -= 1
         count += 1
-        if guess > random_num:
-            print("Oops! The number is too high!")
-            print("Remaining chances: " + str(chances))
-        elif guess < random_num:
-            print("Oh no! The number is too low!")
-            print("Remaining chances: " + str(chances))
-        else:
-            break
+        try:
+            guess = int(input())
+            if guess > random_num:
+                print("Oops! The number is too high!")
+                print("Remaining chances: " + str(chances))
+            elif guess < random_num:
+                print("Oh no! The number is too low!")
+                print("Remaining chances: " + str(chances))
+            else:
+                break
+        except:
+            print("Only numbers are allowed.")
 
     if guess == random_num:
         print("Awesome!! You guessed it right in " + str(count) + " guesses, the number is: " + str(random_num))
